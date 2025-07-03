@@ -1,24 +1,26 @@
 // src/pages/Home.js
 import React, { useEffect } from 'react';
-import useLocalStorage from '../hooks/useLocalStorage'; // Import custom hook
-import './../styles/Page.css'; // This file will contain our image size adjustments
+import useLocalStorage from '../hooks/useLocalStorage';
+import './../styles/Page.css';
 
 const Home = () => {
-  // Use our custom useLocalStorage hook for a visit counter
   const [visitCount, setVisitCount] = useLocalStorage('coffeeShopVisits', 0);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    // Increment visit count every time the Home page loads
+    // Increment visit count only once when the component mounts
     setVisitCount(prevCount => prevCount + 1);
-  }, []); // Empty dependency array means this effect runs only ONCE when the component mounts
+  }, []); // Empty dependency array means this effect runs only once on mount
 
   return (
     <div className="page-container home-page">
       <h1>Welcome to Our Coffee Shop!</h1>
-      <p>Experience the finest coffee and a cozy atmosphere.</p>
-      {/* This is the image that was working, now we will just control its size with CSS */}
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG" alt="Delicious Coffee" className="page-image" />
-      <p>Start your day with a perfect brew.</p>
+      <p>
+        We are passionately dedicated to bringing you the ultimate coffee experience, meticulously sourcing the finest beans and crafting each cup with unparalleled care and expertise.
+      </p>
+      {/* The image is back, using a placeholder similar to the original for now */}
+      <img src="https://via.placeholder.com/600x300?text=Our+Team" alt="Our Team" className="page-image" />
+      <p>Founded in 2023, our mission is to create a welcoming space for coffee lovers.</p>
       <div className="info-box">
         <p>You have visited this page <span className="highlight">{visitCount}</span> times!</p>
       </div>
