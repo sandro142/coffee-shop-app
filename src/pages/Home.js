@@ -6,11 +6,11 @@ import './../styles/Page.css';
 const Home = () => {
   const [visitCount, setVisitCount] = useLocalStorage('coffeeShopVisits', 0);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  
   useEffect(() => {
     // Increment visit count only once when the component mounts
     setVisitCount(prevCount => prevCount + 1);
-  }, []); // Empty dependency array means this effect runs only once on mount
+  }, [setVisitCount]); // Empty dependency array means this effect runs only once on mount
 
   return (
     <div className="page-container home-page">
